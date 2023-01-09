@@ -1,0 +1,11 @@
+.metadata/
+.classpath
+.project
+**/target/*
+**/.settings/
+*.odt
+*.odp
+*#
+**/bin/
+**/node_modules/
+package-lock.json
