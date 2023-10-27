@@ -1,0 +1,16 @@
+export access_token=$(curl --insecure -X POST http://localhost:8080/realms/master/protocol/openid-connect/token --user admin-cli:Psip5UvTO1EXUEwzb15nxLWnwdU1Nlcg -H 'content-type: application/x-www-form-urlencoded' -d 'username=admin&password=admin&grant_type=password' | jq --raw-output '.access_token' )
+
+echo $access_token
+
+curl -k -X GET http://localhost:8080/admin/realms/formation/users -H "Authorization: Bearer "$access_token | jq
+
+curl -k -X GET http://localhost:8080/admin/realms/formation/users/profile/metadata -H "Authorization: Bearer "$access_token | jq
+
+curl -X GET "http://localhost:8080/admin/realms/formation/users/b4492bbc-66d2-470f-860f-2cb50dcfa3bd" -H "Authorization: Bearer $access_token" | jq
+
+curl -X POST http://localhost:8080/admin/realms/formation/users -H "Authorization: Bearer "$access_token -H 'Content-Type: application/json' -d @new-user.json
+
+curl -X GET  "http://localhost:8080/admin/realms/formation/clients" -H "Authorization: Bearer "$access_token | jq
+
+curl -X GET "http://localhost:8080/admin/realms/formation/clients/52a8cf66-aa3d-4336-9dd8-73a32da882e4/protocol-mappers/models" -H "Authorization: Bearer "$access_token | jq
+

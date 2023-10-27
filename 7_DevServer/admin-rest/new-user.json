@@ -1,0 +1,20 @@
+{
+    "username": "api-user",
+    "enabled": true,
+    "totp": false,
+    "emailVerified": false,
+    "firstName": "D",
+    "lastName": "T2",
+    "email": "new-user@gmail.com",
+    "disableableCredentialTypes": [],
+    "requiredActions": [],
+    "notBefore": 0,
+    "access": {
+      "manageGroupMembership": true,
+      "view": true,
+      "mapRoles": true,
+      "impersonate": true,
+      "manage": true
+    }
+}
+
