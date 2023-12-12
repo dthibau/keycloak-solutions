@@ -41,10 +41,12 @@
         // Instancier puis initialiser Keycloak, en cas d'authentification réussie, appeler profile()
         keycloak = new Keycloak();
         console.log(keycloak);
-        keycloak.init({onLoad: 'login-required'}).then(function () {
+        keycloak.init({onLoad: 'login-required',
+                       pkceMethod: 'S256', 
+                       enableLogging: true}).then(function () {
             console.log('User is now authenticated.');
             profile();
-        }).error(function (err) {
+        }).catch(function (err) {
             console.log('err.'+err);
         });
         
