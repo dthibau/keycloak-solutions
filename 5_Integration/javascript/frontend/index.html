@@ -20,6 +20,10 @@
             document.getElementById('user').style.display = 'block';
         }
 
+        function unauthenticate() {
+            document.getElementById('name').textContent = "Failed to authenticate"
+        }
+
         function sendRequest() {
             var req = new XMLHttpRequest();
             req.onreadystatechange = function() {
@@ -29,12 +33,20 @@
             }
             req.open('GET', 'SERVICE_URL', true);
             // Ajouter le jeton dans la requête
-
+            req.open('GET', 'SERVICE_URL', true);
+            req.setRequestHeader('Authorization', 'Bearer ' + keycloak.token);
             req.send();
         }
 
-        // Instancier puis initialiser Keycloak
-
+        // Instancier puis initialiser Keycloak, en cas d'authentification réussie, appeler profile()
+        keycloak = new Keycloak();
+        console.log(keycloak);
+        keycloak.init({onLoad: 'login-required'}).then(function () {
+            console.log('User is now authenticated.');
+            profile();
+        }).error(function (err) {
+            console.log('err.'+err);
+        });
         
     </script>
 </head>
