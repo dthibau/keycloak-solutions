@@ -1,0 +1,10 @@
+{
+  "realm": "formation",
+  "auth-server-url": "http://localhost:8080/",
+  "ssl-required": "external",
+  "resource": "backend",
+  "credentials": {
+    "secret": "DNXsPrF3nlL9C5uK5gmEI8u80NgAIO05"
+  },
+  "confidential-port": 0
+}
