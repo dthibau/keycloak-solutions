@@ -3,12 +3,15 @@ package org.formation.service;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
+import org.eclipse.microprofile.rest.client.annotation.RegisterProvider;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
+import io.quarkus.oidc.token.propagation.reactive.AccessTokenRequestReactiveFilter;
 import io.smallrye.mutiny.Uni;
 
 @Path("/notifications")
 @RegisterRestClient(configKey = "notification-api")
+@RegisterProvider(AccessTokenRequestReactiveFilter.class)
 public interface NotificationService {
 
 	@POST
