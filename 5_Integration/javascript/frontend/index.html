@@ -19,6 +19,7 @@
             }
             document.getElementById('user').style.display = 'block';
         }
+
         function sendRequest() {
             var req = new XMLHttpRequest();
             req.onreadystatechange = function() {
@@ -27,18 +28,13 @@
                 }
             }
             req.open('GET', 'SERVICE_URL', true);
-            req.setRequestHeader('Authorization', 'Bearer ' + keycloak.token);
+            // Ajouter le jeton dans la requête
+
             req.send();
         }
 
-        keycloak = new Keycloak();
-        console.log(keycloak);
-        keycloak.init({onLoad: 'login-required'}).success(function () {
-            console.log('User is now authenticated.');
-            profile();
-        }).error(function (err) {
-            console.log('err.'+err);
-        });
+        // Instancier puis initialiser Keycloak
+
         
     </script>
 </head>
